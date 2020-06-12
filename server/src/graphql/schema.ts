@@ -6,7 +6,7 @@ const schema = `
     id: String!
   }
 
-  input Creation {
+  input CreationInput {
     name: String!
     grade: Int!
     code: String!
@@ -15,8 +15,11 @@ const schema = `
   type Query {
     get(id: String!): Episode!
     getAll: [Episode]!
+  }
+
+  type Mutation {
     set(name: String, grade: Int, code: String): Episode!
-    update(id: String!, episode: Creation!): Episode!
+    update(id: String!, episode: CreationInput!): Episode!
     delete(id: String!): Episode!
   }
 `

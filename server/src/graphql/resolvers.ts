@@ -2,7 +2,7 @@ import { uuid as generate } from 'uuidv4'
 import { read, create, update, deleteM } from './../database'
 import { Episode } from '../types'
 
-const resolvers: Object = {
+const resolvers: object = {
   Query: {
     get: async (_: any, { id }: { id: string }) => {
       return await read.listOne(id)
@@ -11,7 +11,9 @@ const resolvers: Object = {
       const ids: string[] = await (await read.listAll()).map(id => id.replace('.json', ''))
       const episodes: Promise<Array<Episode>> = Promise.all(ids.map(id => read.listOne(id)))
       return episodes
-    },
+    }
+  },
+  Mutation: {
     set: async (_: any, { name, grade, code }: Episode) => {
       const uuid = generate()
       return await create.createManga({ id: uuid, name, grade, code })
