@@ -6,12 +6,18 @@ const schema = `
     id: String!
   }
 
+  input Creation {
+    name: String!
+    grade: Int!
+    code: String!
+  }
+
   type Query {
-    get(id: String): Episode
-    getAll: [Episode]
-    set(name: String, grade: Int, code: String): Episode
-    update(id: String, name: String, grade: Int, code: String): Episode
-    delete(id: String): Episode
+    get(id: String!): Episode!
+    getAll: [Episode]!
+    set(name: String, grade: Int, code: String): Episode!
+    update(id: String!, episode: Creation!): Episode!
+    delete(id: String!): Episode!
   }
 `
 

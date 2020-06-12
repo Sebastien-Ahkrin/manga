@@ -16,8 +16,8 @@ const resolvers: Object = {
       const uuid = generate()
       return await create.createManga({ id: uuid, name, grade, code })
     },
-    update: async (_: any, { id, name, grade, code }: Episode) => {
-      return await update.updateManga(id!, { id, name, grade, code })
+    update: async (_: any, { id, episode }: { id: string, episode: Episode }) => {
+      return await update.updateManga(id!, { ...episode, id})
     },
     delete: async (_: any, { id }: { id: string }) => {
       const old = await read.listOne(id)
