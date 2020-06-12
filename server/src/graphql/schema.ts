@@ -8,6 +8,7 @@ const schema = `
 
   type Query {
     get(uuid: String): Episode
+    set(name: String, grade: Int, code: String): Episode
   }
 `
 
