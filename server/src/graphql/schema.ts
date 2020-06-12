@@ -7,8 +7,11 @@ const schema = `
   }
 
   type Query {
-    get(uuid: String): Episode
+    get(id: String): Episode
+    getAll: [Episode]
     set(name: String, grade: Int, code: String): Episode
+    update(id: String, name: String, grade: Int, code: String): Episode
+    delete(id: String): Episode
   }
 `
 
